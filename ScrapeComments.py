@@ -195,7 +195,7 @@ def run():
 	dct = {}
 
 	print(colored("\n=====",'green'))
-	v_id = syntax_error_catch('Give a video id from the channel you\'d like to scrape (make sure you put it in' +
+	v_id = syntax_error_catch('Give a video id from the channel you\'d like to scrape. \n(If you\'re using Python 2, make sure you put it in' +
 		' quotes! ex. "pFPd_Dhs51s"): ')
 	c_id = get_channel_id_from_video_id(v_id)
 	p_id = get_all_uploads_from_channel_id(c_id)
@@ -230,10 +230,10 @@ def run():
 		n = len(v_ids)
 
 	else:
-		category = syntax_error_catch('Tell us which MBFC category this channel falls under (cp, lb, lcb, q, rb) (make sure ' + 
-			'you put it in quotes! ex. "cp"): ')
+		category = syntax_error_catch('Tell us which MBFC category this channel falls under (ex. cp, lb, lcb, qs, rb) (make sure ' + 
+			'you put it in quotes w/ Python 2! ex. "cp"): ')
 		save_name = category + "/" + syntax_error_catch('What\'s the name of the channel? We\'ll use this to save your data as /<category>/'
-			+ '<input>_comments.pkl \n(Make sure you put it in quotes! ex. "dailymail"): ') + '_comments'
+			+ '<input>_comments.pkl \n(Make sure you put it in quotes w/ Python 2! ex. "dailymail"): ') + '_comments'
 
 		last_video_id = None
 		scraped_channels[c_id] = [save_name, last_video_id, []]
@@ -280,7 +280,7 @@ def syntax_error_catch(phrase):
 		try:
 			answer = input(colored(phrase, 'yellow'))
 		except (NameError, SyntaxError):
-			print(colored("Please re-enter your answer in quotes.", 'red'))
+			print(colored("We're assuming you ran into an error coz you're using Python 2. Please re-enter your answer in quotes.", 'red'))
 		else:
 			return answer
 
